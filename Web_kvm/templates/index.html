@@ -1,0 +1,25 @@
+{% if islogin == '1' %}
+{% extends "base.html" %}
+{% block content %}
+
+<div id="right" style=float:left;width:80%;height:650px;border:1px #F00 solid;>
+
+    <h1 align="center" style="font-size: 80px;color:midnightblue">
+        Virtual Machines
+    </h1>
+
+    <h2 align="center" style="font-size:large;color: darkblue">
+        All of my virtual machines currently running on the Cloud.
+    </h2>
+    <br/>
+    <br/>
+    <form action="" method="post" align="center">
+        <input type="submit" value="Create a VM" name="Create" style="font-size: x-large;background-color:green;border-radius:10px;height: 50px;width: 200px">
+    </form>
+
+</div>
+
+{% endblock %}
+{% else %}
+    <span>{{username}}</span>
+{% endif %}

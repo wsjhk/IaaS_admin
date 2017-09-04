@@ -1,0 +1,20 @@
+{% if islogin == '1' %}
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container" >
+        <br/>
+        <br/>
+        <br/>
+        {% if result.split("~")[1] == "ok"%}
+            <h1 style="font-size: 50px;color: #670d10" align="center">虚拟机&nbsp;&nbsp;{{ result.split("~")[0] }}&nbsp;&nbsp;迁移成功！</h1>
+        {% else %}
+            <h1 style="font-size: 50px;color: #670d10" align="center">虚拟机&nbsp;&nbsp;{{ result.split("~")[0] }}&nbsp;&nbsp;迁移失败，请联系管理员！</h1>
+        {% endif %}
+
+    </div>
+
+{% endblock %}
+{% else %}
+    <span>{{username}}</span>
+{% endif %}

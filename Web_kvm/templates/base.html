@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>kvm</title>
+
+</head>
+<body>
+<div id="container" style=width:100%;margin:auto;>
+	<div id="header" style=width:100%;height:100px;border:1px #F00 solid;>
+		<div id="logo" style=float:left;width:20%;height:100px;border:1px #F00 solid;>
+			<ul>
+				<span style="font-size: xx-large;color:darkgreen">KVM Cloud</span>
+			</ul>
+		</div>
+		<div id="status" style=float:left;width:80%;height:100px;border:1px #F00 solid;>
+			<ul>
+                <span style="float:right;font-size: x-large;color: darkgreen">Welcome,{{username}}.<a href="/" target="in">[LogOut]</a></span>
+			</ul>
+		</div>
+	</div>
+	<div id="main" style=width:100%;height:650px;border:1px #F00 solid;>
+		<div id="menu" style=float:left;width:20%;height:650px;border:1px;background-color:yellowgreen #F00 solid;>
+			<ul>
+				<span>虚拟机管理</span>
+				<ul>
+					<li><a href="vm_list">虚拟机列表</a></li>
+					<li><a href="vm_create">创建虚拟机</a></li>
+				</ul>
+				<span>磁盘管理</span>
+				<ul>
+					<li><a href="disk_list">磁盘列表</a></li>
+					<li><a href="disk_create">创建磁盘</a></li>
+				</ul>
+				<span>虚拟机迁移</span>
+				<ul>
+					<li><a href="vm_migrate">虚拟机迁移（动态）</a></li>
+					<!-- <li><a href="http://www.cnblogs.com/tornadomeet/p/3395593.html" target="in">动态迁移</a></li> -->
+				</ul>
+			</ul>
+		</div>
+        <div id="right" style=float:left;width:80%;height:650px;border:1px;background-color:snow #F00 solid;>
+            {% block content %}
+
+            {% endblock %}
+		</div>
+	</div>
+	<div id="footer" style=width:100%;height:90px;border:1px;background-color:rebeccapurple  #F00 solid;>
+		<ul>
+            <span style="font-size: large">CopyRight</span>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

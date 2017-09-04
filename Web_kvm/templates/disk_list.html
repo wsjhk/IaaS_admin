@@ -1,0 +1,59 @@
+{% if islogin == '1' %}
+{% extends "base.html" %}
+{% block content %}
+
+<div class="box-body">
+    <table class="table table-bordered" border="1" align="center" style="width: 100%">
+		<tr>
+			<th style="width: 10px">#</th>
+			<th>磁盘名称</th>
+			<th>磁盘大小(G)</th>
+			<th>状态</th>
+            <th>挂载到虚拟机</th>
+			<th style="width: 40px">删除操作</th>
+		</tr>
+		{% if disk_info %}
+			{% for disk in disk_info %}
+				<tr>
+					<td align="center">
+						#
+					</td>
+					<td align="center">
+						{{disk[0]}}
+					</td>
+					<td style="background-color: aquamarine" align="center">
+						{{disk[1]}}
+					</td>
+                    <td align="center">
+						{{disk[2]}}
+					</td>
+                    <td align="center" style="width: 30%">
+						{% if disk[2] == "unuse" %}
+                            <form action="" method="post" name="mount_disk" onsubmit="return confirm('确认要挂载磁盘到虚拟机吗?');">
+                                <input type="hidden" value="mount~{{disk[0]}}" name="mount_disk_name">
+                                <input type="text" placeholder="请输入要挂载的虚拟机名称" name="mount_umount" style="width: 60%;height: 25px;color: #670d10;float: left">
+                                <input type="submit" value="挂载" name="mount" style="color: #3762bc;width: 100px;font-size: large;float: right">
+                            </form>
+                        {% else %}
+                            <form action="" method="post" name="umount_disk" onsubmit="return confirm('确认要卸载磁盘吗?');">
+                                <input type="hidden" value="umount~{{disk[0]}}" name="mount_umount">
+                                <input type="submit" value="卸载" name="umount" style="color: #3762bc;font-size: large;width: 100%">
+                            </form>
+                        {% endif %}
+					</td>
+					<td align="center">
+						<form action="" method="post" name="delete_disk" onsubmit="return confirm('确认要删除磁盘吗?');">
+                            <input type="hidden" value="deldisk~{{disk[0]}}" name="mount_umount">
+							<input type="submit" value="Delete_Disk" name="delete" style="color: #3762bc;font-size: large;width: 100%">
+						</form>
+					</td>
+			  </tr>
+			{% endfor %}
+		{% endif %}
+    </table>
+</div>
+
+{% endblock %}
+{% else %}
+    <span>{{username}}</span>
+{% endif %}

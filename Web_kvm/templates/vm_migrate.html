@@ -1,0 +1,21 @@
+{% if islogin == '1' %}
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container" >
+        <div class="item">
+            <form action="" method="post">
+                虚拟机名称:  <br/>
+                <input type="text" placeholder="vm_name" name="vm_name" style="height: 50px;width: 500px" /><br/>
+                <span style="font-size: large">to</span> <br/>
+                目的KVM主机:    <br/>
+                <input type="text" placeholder="KVM_IP" name="kvm_ip" style="height: 50px;width: 500px" /><br/>
+                <input type="submit" value="迁移" style="height: 30px;width: 50px" /> <input type="reset" value="重置" style="height: 30px;width: 50px" />
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+{% else %}
+    <span>{{username}}</span>
+{% endif %}

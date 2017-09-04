@@ -1,0 +1,20 @@
+{% if islogin == '1' %}
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container" >
+        <div class="item">
+            <form action="" method="post">
+                磁盘名称:  <br/>
+                <input type="text" placeholder="disk_name" name="disk_name" style="height: 50px;width: 500px" /><br/>
+                磁盘大小（G）:    <br/>
+                <input type="text" placeholder="disk_size" name="disk_size" style="height: 50px;width: 500px" /><br/>
+                <input type="submit" value="创建" style="height: 30px;width: 50px" /> <input type="reset" value="重置" style="height: 30px;width: 50px" />
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+{% else %}
+    <span>{{username}}</span>
+{% endif %}

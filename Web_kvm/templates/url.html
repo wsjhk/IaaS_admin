@@ -1,0 +1,12 @@
+{% if islogin == '1' %}
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+    <iframe id="vnc" width="1006" height="644" name="vnc" src={{ url }} ></iframe>
+</div>
+
+{% endblock %}
+{% else %}
+    <span>{{username}}</span>
+{% endif %}

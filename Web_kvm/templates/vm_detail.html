@@ -1,0 +1,60 @@
+{% if islogin == '1' %}
+{% extends "base.html" %}
+{% block content %}
+    <div class="container" >
+        <span style="font-size: 30px">虚拟机：{{vm[0]}}---------------------当前状态：{{vm[3]}}</span>
+        <br/>
+        <br/>
+        <div class="one">
+            <div style="float: left">
+                <form action="" method="post" name="start" onsubmit="return confirm('确认要启动虚拟机吗?');">
+                    <input type="hidden" value="start~{{vm[0]}}" name="oprate_vm" width:10px>
+                    <input type="submit" value="开机" name="start" style="font-size: x-large;background-color:green;border-radius:30px;height: 50px;width: 200px">
+                </form>
+            </div>
+
+            <div align="center">
+                <form action="" method="post" name="stop" onsubmit="return confirm('确认要关闭虚拟机吗?');">
+                    <input type="hidden" value="shutdown~{{vm[0]}}" name="oprate_vm" width:10px>
+                    <input type="submit" value="关机" name="shutdown" style="font-size: x-large;background-color:green;border-radius:30px;height: 50px;width: 200px">
+                </form>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="two">
+            <div style="float: left">
+                <form action="" method="post" name="reboot" onsubmit="return confirm('确认要重启虚拟机吗?');">
+                    <input type="hidden" value="reboot~{{vm[0]}}" name="oprate_vm" width:10px>
+                    <input type="submit" value="重启" name="reboot" style="font-size: x-large;background-color:green;border-radius:30px;height: 50px;width: 200px">
+                </form>
+            </div>
+            <div align="center">
+                <form action="" method="post" name="reboot_force" onsubmit="return confirm('确认要强制重启虚拟机吗?');">
+                    <input type="hidden" value="reboot_force~{{vm[0]}}" name="oprate_vm" width:10px>
+                    <input type="submit" value="强制重启" name="reboot_force" style="font-size: x-large;background-color:green;border-radius:30px;height: 50px;width: 200px">
+                </form>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="item">
+            <span style="font-size: 30px;color: #670d10">在线调整参数：</span><br/>
+            <span style="font-size: 30px">当前参数： cpu：{{vm[1]}}-----------------raw：{{vm[2]}}</span>
+            <br/>
+            <form action="" method="post" onsubmit="return confirm('确认修改虚拟机的参数吗?');">
+                <span style="font-size: 30px">cpu:</span><br/>
+                <input style="font-size: 30px" type="text" placeholder="enter the cpu numbers:" name="cpu" value={{vm[1]}} style="height: 50px;width: 500px" /><br/>
+                <span style="font-size: 30px">raw（KB）:</span><br/>
+                <input style="font-size: 30px" type="text" placeholder="enter the memory size:" name="ram" value={{vm[2]}} style="height: 50px;width: 500px" /><br/>
+                <input type="hidden" value={{vm[0]}} name="alter_name" width:10px>
+                <input type="submit" value="提交" style="height: 30px;width: 50px" /> <input type="reset" value="重置" style="height: 30px;width: 50px" />
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% else %}
+    <span>{{username}}</span>
+{% endif %}

@@ -1,0 +1,29 @@
+{% if islogin == '1' %}
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container">
+        <div class="item">
+            <form action="" method="post" name="创建虚拟机" onsubmit="return confirm('确认要提交吗?');">
+                虚拟机名称:  <br/>
+                <input type="text" placeholder="vm_name" name="vm_name" style="height: 50px;width: 500px" /><br/>
+                CPU核数:  <br/>
+                <input type="text" placeholder="vm_cpu" name="vm_cpu" style="height: 50px;width: 500px" /><br/>
+                内存大小（G）:    <br/>
+                <input type="text" placeholder="vm_memory" name="vm_memory" style="height: 50px;width: 500px" /><br/>
+                磁盘大小（G）:    <br/>
+                <input type="text" placeholder="vm_disk" name="vm_disk" style="height: 50px;width: 500px" /><br/>
+                安装镜像:   <br/>
+                <select style="height: 50px;width: 500px" name="vm_images">
+                    <option value="Windows_xp">Windows_xp</option>
+                    <option value="Linux_CentOS">Linux_CentOS</option>
+                </select><br/>
+                <input type="submit" value="创建" style="height: 30px;width: 50px" /> <input type="reset" value="重置" style="height: 30px;width: 50px" />
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+{% else %}
+    <span>{{username}}</span>
+{% endif %}

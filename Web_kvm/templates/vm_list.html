@@ -1,0 +1,74 @@
+{% if islogin == '1' %}
+{% extends "base.html" %}
+{% block content %}
+
+<div class="box-body">
+    <table class="table table-bordered" border="1" align="center" style="width: 100%">
+		<tr>
+			<th style="width: 10px">#</th>
+			<th>虚拟机名称</th>
+            <th>IP地址</th>
+			<th>CPU</th>
+            <th>内存(KB)</th>
+            <th>操作系统</th>
+            <th>状态</th>
+			<th>删除虚拟机</th>
+            <th>console</th>
+		</tr>
+		{% if vm_info %}
+            {% for vm in vm_info %}
+				<tr>
+					<td align="center">
+						#
+					</td>
+					<td align="center">
+						<a href="/vm_detail?vm_name=[{{vm[0]}},{{vm[2]}},{{vm[3]}},{{vm[5]}}]">{{vm[0]}}</a>
+					</td>
+					<td align="center">
+						{{vm[1]}}
+					</td>
+					<td align="center">
+						{{vm[2]}}
+					</td>
+					<td align="center">
+						{{vm[3]}}
+					</td>
+                    <td align="center">
+						{{vm[4]}}
+					</td>
+                    <td align="center">
+						{{vm[5]}}
+					</td>
+					<td align="center">
+						<form action="" method="post" name="delete" onsubmit="return confirm('确认要删除虚拟机吗?');">
+							<input type="hidden" value={{vm[0]}} name="del_vm_name" width:10px>
+                            <input type="submit" value="Delete_VM" name="delete" style="width: 100%">
+						</form>
+					</td>
+                    <td align="center">
+                        {% if vm[0] == "centos" %}
+                            <form style="float: left">
+                                <input type="hidden" value="http://192.168.0.130:{{vm[6]}}/vnc.html?host=192.168.0.130&port={{vm[6]}}" name="url" width:10px>
+                                <input type="submit" value="VNC" name="console" style="width: 100%">
+                            </form>
+                            <form style="float: right">
+                                <input type="hidden" value="http://{{vm[1]}}:4200" name="url" width:10px>
+                                <input type="submit" value="SSH" name="console" style="width: 100%">
+                            </form>
+                        {% else %}
+                            <form>
+                                <input type="hidden" value="http://192.168.0.130:{{vm[6]}}/vnc.html?host=192.168.0.130&port={{vm[6]}}" name="url" width:10px>
+                                <input type="submit" value="VNC/SSH" name="console" style="width: 100%">
+                            </form>
+                        {% endif %}
+					</td>
+			  </tr>
+            {% endfor %}
+		{% endif %}
+    </table>
+</div>
+
+{% endblock %}
+{% else %}
+    <span>{{username}}</span>
+{% endif %}
